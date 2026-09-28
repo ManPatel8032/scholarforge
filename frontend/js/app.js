@@ -76,7 +76,7 @@
             }).join('');
         }
 
-        const themeIcon = theme === 'dark' ? '☀️' : '🌙';
+        const themeIcon = theme === 'dark' ? '<i class="ph ph-sun"></i>' : '<i class="ph ph-moon"></i>';
 
         let rightHTML = '';
         if (isAuth && user) {

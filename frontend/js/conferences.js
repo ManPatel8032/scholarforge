@@ -3,14 +3,14 @@
    ═══════════════════════════════════════════ */
 
 const CONFERENCE_TEMPLATES = [
-    { id: 'ieee', name: 'IEEE', fullName: 'IEEE Conference Publications', logo: '📊', description: 'Two-column layout, numbered citations', format: 'Two Column' },
-    { id: 'acm', name: 'ACM', fullName: 'ACM SIGCONF', logo: '🏛️', description: 'Single column, balanced citations', format: 'Single Column' },
-    { id: 'nature', name: 'Nature', fullName: 'Nature Publishing', logo: '🌿', description: 'Scientific journal format, Harvard style', format: 'Single Column' },
-    { id: 'springer', name: 'Springer', fullName: 'Springer Proceedings', logo: '📚', description: 'LNCS format, numbered citations', format: 'Two Column' },
-    { id: 'arxiv', name: 'ArXiv', fullName: 'ArXiv Preprints', logo: '🔬', description: 'Preprint format, flexible layout', format: 'Single Column' },
-    { id: 'iclr', name: 'ICLR', fullName: 'Intl. Conf. Learning Representations', logo: '🤖', description: 'ML conference format, IEEE style', format: 'Two Column' },
-    { id: 'cvpr', name: 'CVPR', fullName: 'IEEE/CVF Computer Vision', logo: '👁️', description: 'Computer vision format, two-column', format: 'Two Column' },
-    { id: 'acl', name: 'ACL', fullName: 'Assoc. Computational Linguistics', logo: '🗣️', description: 'NLP format', format: 'Single Column' },
+    { id: 'ieee', name: 'IEEE', fullName: 'IEEE Conference Publications', logo: '<i class="ph ph-cpu"></i>', description: 'Two-column layout, numbered citations', format: 'Two Column' },
+    { id: 'acm', name: 'ACM', fullName: 'ACM SIGCONF', logo: '<i class="ph ph-terminal-window"></i>', description: 'Single column, balanced citations', format: 'Single Column' },
+    { id: 'nature', name: 'Nature', fullName: 'Nature Publishing', logo: '<i class="ph ph-leaf"></i>', description: 'Scientific journal format, Harvard style', format: 'Single Column' },
+    { id: 'springer', name: 'Springer', fullName: 'Springer Proceedings', logo: '<i class="ph ph-books"></i>', description: 'LNCS format, numbered citations', format: 'Two Column' },
+    { id: 'arxiv', name: 'ArXiv', fullName: 'ArXiv Preprints', logo: '<i class="ph ph-microscope"></i>', description: 'Preprint format, flexible layout', format: 'Single Column' },
+    { id: 'iclr', name: 'ICLR', fullName: 'Intl. Conf. Learning Representations', logo: '<i class="ph ph-robot"></i>', description: 'ML conference format, IEEE style', format: 'Two Column' },
+    { id: 'cvpr', name: 'CVPR', fullName: 'IEEE/CVF Computer Vision', logo: '<i class="ph ph-eye"></i>', description: 'Computer vision format, two-column', format: 'Two Column' },
+    { id: 'acl', name: 'ACL', fullName: 'Assoc. Computational Linguistics', logo: '<i class="ph ph-megaphone"></i>', description: 'NLP format', format: 'Single Column' },
 ];
 
 const CONFERENCE_FORMATS = {

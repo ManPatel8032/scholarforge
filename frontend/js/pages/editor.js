@@ -65,7 +65,7 @@ window.Pages.editor = function (container) {
           ? window.paperDoc.toJSON()
           : (window.DocumentModel ? DocumentModel.flatToTree(AppState.doc) : docToTypstMappedData(AppState.doc));
       API.saveManuscript(tree)
-        .then(() => _showSaveStatus('✓ Saved to paper.json', '#22c55e'))
+        .then(() => _showSaveStatus('<i class="ph ph-check"></i> Saved to paper.json', '#22c55e'))
         .catch(err => {
           console.warn('Auto-save failed:', err);
           _showSaveStatus('✗ Save failed – is the server running?', '#ef4444');
@@ -108,7 +108,7 @@ window.Pages.editor = function (container) {
         </div>
       </div>
       <!-- Chat FAB -->
-      <button class="chat-fab" id="chat-fab" title="Open AI Chat">💬</button>
+      <button class="chat-fab" id="chat-fab" title="Open AI Chat"><i class="ph ph-chat-teardrop-text"></i></button>
     `;
 
     App.attachNavbarEvents();
@@ -143,11 +143,11 @@ window.Pages.editor = function (container) {
     const templates = Conferences.CONFERENCE_TEMPLATES;
 
     const actions = [
-      { id: 'section', icon: '📄', title: 'Add Section', shortcut: 'Ctrl+Shift+S' },
-      { id: 'subsection', icon: '📑', title: 'Add Subsection', shortcut: 'Ctrl+Shift+U' },
-      { id: 'table', icon: '📊', title: 'Add Table', shortcut: 'Ctrl+Shift+T' },
-      { id: 'image', icon: '🖼️', title: 'Add Image', shortcut: 'Ctrl+Shift+I' },
-      { id: 'author', icon: '👤', title: 'Add Author', shortcut: 'Ctrl+Shift+A' },
+      { id: 'section', icon: '<i class="ph ph-file-text"></i>', title: 'Add Section', shortcut: 'Ctrl+Shift+S' },
+      { id: 'subsection', icon: '<i class="ph ph-files"></i>', title: 'Add Subsection', shortcut: 'Ctrl+Shift+U' },
+      { id: 'table', icon: '<i class="ph ph-chart-bar"></i>', title: 'Add Table', shortcut: 'Ctrl+Shift+T' },
+      { id: 'image', icon: '<i class="ph ph-image"></i>', title: 'Add Image', shortcut: 'Ctrl+Shift+I' },
+      { id: 'author', icon: '<i class="ph ph-user"></i>', title: 'Add Author', shortcut: 'Ctrl+Shift+A' },
     ];
 
     const actionBtns = actions.map(a => `
@@ -205,7 +205,7 @@ window.Pages.editor = function (container) {
         <div class="sidebar-header">
           <div class="sidebar-header-title">${collapsed ? 'TOOLS' : 'Modification Panel'}</div>
           <button class="icon-btn" id="sidebar-toggle" title="${collapsed ? 'Expand' : 'Collapse'}" style="height: 2rem; width: 2rem; font-size: 0.85rem;">
-            ${collapsed ? '▶' : '◀'}
+            ${collapsed ? '<i class="ph ph-caret-right"></i>' : '<i class="ph ph-caret-left"></i>'}
           </button>
         </div>
         <div class="sidebar-body">
@@ -262,7 +262,7 @@ window.Pages.editor = function (container) {
       }).join('');
 
       return `
-        <div style="margin-top: 2rem;">
+        <div style="margin-top: 1.25rem;">
           <div class="flex items-baseline gap-3 node-clickable" data-node-level="1" data-node-type="section" data-node-title="${section.name}">
             <span class="section-number">${idx + 1}.</span>
             <h2 contenteditable="true" class="text-xl font-bold text-primary" data-edit-section-name="${idx}">${section.name}</h2>
@@ -274,7 +274,7 @@ window.Pages.editor = function (container) {
     }).join('');
 
     const tablesHTML = doc.tables.length > 0 ? `
-      <div style="margin-top: 2.5rem; padding-top: 2.5rem; border-top: 1px solid var(--border);">
+      <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
         <h2 class="text-sm font-bold uppercase text-muted mb-6">Tables & Data</h2>
         ${doc.tables.map((table, i) => `
           <div style="margin-bottom: 2rem; border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; position:relative;">
@@ -293,7 +293,7 @@ window.Pages.editor = function (container) {
     ` : '';
 
     const imagesHTML = doc.images.length > 0 ? `
-      <div style="margin-top: 2.5rem; padding-top: 2.5rem; border-top: 1px solid var(--border);">
+      <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
         <h2 class="text-sm font-bold uppercase text-muted mb-6">Figures</h2>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem;">
           ${doc.images.map((img, i) => `
@@ -314,7 +314,7 @@ window.Pages.editor = function (container) {
     ` : '';
 
     const referencesHTML = Array.isArray(doc.references) && doc.references.length > 0 ? `
-      <div style="margin-top: 2.5rem; padding-top: 2.5rem; border-top: 1px solid var(--border);">
+      <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
         <h2 class="text-sm font-bold uppercase text-muted mb-4">References</h2>
         <ol style="padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.35rem; font-size: 0.8rem; color: var(--text-secondary);">
           ${doc.references.map((ref, i) => `
@@ -407,7 +407,7 @@ window.Pages.editor = function (container) {
       <div class="preview-panel" id="preview-panel-root">
         <div class="preview-header">
           <div class="flex items-center gap-2">
-            <div style="height: 2rem; width: 2rem; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; color: #fff; background: ${fmt.accentColor}; font-size: 0.85rem;">📄</div>
+            <div style="height: 2rem; width: 2rem; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; color: #fff; background: ${fmt.accentColor}; font-size: 0.85rem;"><i class="ph ph-file-text"></i></div>
             <div class="flex items-center gap-2">
               <div class="text-xs font-semibold text-secondary tracking-wide">Live Preview</div>
               <span class="badge" style="background: ${fmt.accentColor};">${conf.toUpperCase()}</span>
@@ -415,9 +415,9 @@ window.Pages.editor = function (container) {
             </div>
           </div>
           <div class="flex items-center gap-2">
-            <button class="btn btn-outline btn-sm" id="btn-fullpage">⛶ Full Preview</button>
-            <button class="btn btn-outline btn-sm" id="btn-export-json">📋 JSON Tree</button>
-            <button class="btn btn-primary btn-sm" id="btn-export">⬇ Export</button>
+            <button class="btn btn-outline btn-sm" id="btn-fullpage"><i class="ph ph-corners-out"></i> Full Preview</button>
+            <button class="btn btn-outline btn-sm" id="btn-export-json"><i class="ph ph-clipboard-text"></i> JSON Tree</button>
+            <button class="btn btn-primary btn-sm" id="btn-export"><i class="ph ph-download-simple"></i> Export</button>
           </div>
         </div>
         <div class="preview-body">
@@ -549,7 +549,7 @@ window.Pages.editor = function (container) {
     const fmtCit = Conferences.formatCitation;
     const refs = Array.isArray(doc.references) ? doc.references : [];
     const refsHTML = refs.length > 0 ? `
-      <div class="break-inside-avoid" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #cbd5e1;">
+      <div class="break-inside-avoid" style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid #cbd5e1;">
         <h2 style="font-weight: 700; margin-bottom: 0.75rem; font-size: ${fmt.headingTransform === 'uppercase' ? '0.75rem' : '0.9rem'}; letter-spacing: ${fmt.headingTransform === 'uppercase' ? '0.04em' : 'normal'};">${tH('References', fmt.headingTransform)}</h2>
         <div style="font-size: 0.75rem; color: #475569; line-height: 1.625;">
           ${refs.map((ref, idx) => `
@@ -563,7 +563,7 @@ window.Pages.editor = function (container) {
         </div>
       </div>
     ` : `
-      <div class="break-inside-avoid" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #cbd5e1;">
+      <div class="break-inside-avoid" style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid #cbd5e1;">
         <h2 style="font-weight: 700; margin-bottom: 0.75rem; font-size: ${fmt.headingTransform === 'uppercase' ? '0.75rem' : '0.9rem'}; letter-spacing: ${fmt.headingTransform === 'uppercase' ? '0.04em' : 'normal'};">${tH('References', fmt.headingTransform)}</h2>
         <div style="font-size: 0.75rem; color: #475569; line-height: 1.625;">
           <div style="display: flex; gap: 0.5rem; margin-bottom: 0.375rem;">
@@ -1153,7 +1153,7 @@ window.Pages.editor = function (container) {
     overlay.innerHTML = `
       <div class="fullpage-toolbar">
         <div class="flex items-center gap-3">
-          <div style="height: 2.25rem; width: 2.25rem; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; color: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.15); background: ${fmt.accentColor};">📄</div>
+          <div style="height: 2.25rem; width: 2.25rem; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; color: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.15); background: ${fmt.accentColor};"><i class="ph ph-file-text"></i></div>
           <div>
             <div class="text-sm font-semibold text-primary flex items-center gap-2">
               Full Page Preview <span class="badge" style="background: ${fmt.accentColor};">${conf.toUpperCase()}</span>
@@ -1168,8 +1168,8 @@ window.Pages.editor = function (container) {
             <button class="zoom-btn" id="fp-zoom-in" title="Zoom In">+</button>
             <button class="zoom-btn" id="fp-zoom-reset" title="Reset">↺</button>
           </div>
-          <button class="btn btn-primary btn-sm" id="fp-export">⬇ Export</button>
-          <button class="icon-btn" id="fp-close" title="Close (Escape)" style="height: 2.25rem; width: 2.25rem;">✕</button>
+          <button class="btn btn-primary btn-sm" id="fp-export"><i class="ph ph-download-simple"></i> Export</button>
+          <button class="icon-btn" id="fp-close" title="Close (Escape)" style="height: 2.25rem; width: 2.25rem;"><i class="ph ph-x"></i></button>
         </div>
       </div>
       <div class="fullpage-paper-area">
@@ -1227,10 +1227,10 @@ window.Pages.editor = function (container) {
     panel.innerHTML = `
       <div class="chat-header">
         <div class="flex items-center gap-2">
-          <span style="color: var(--brand-from); font-size: 1.2rem;">▶</span>
+          <span style="color: var(--brand-from); font-size: 1.2rem;"><i class="ph ph-caret-right"></i></span>
           <span class="font-semibold text-primary">IdeaOverflow AI</span>
         </div>
-        <button class="icon-btn" id="chat-close" style="height: 2rem; width: 2rem; font-size: 0.85rem;">✕</button>
+        <button class="icon-btn" id="chat-close" style="height: 2rem; width: 2rem; font-size: 0.85rem;"><i class="ph ph-x"></i></button>
       </div>
       <div class="chat-messages" id="chat-msgs">
         <div class="chat-empty">
@@ -1267,7 +1267,7 @@ window.Pages.editor = function (container) {
       fab.className = 'chat-fab';
       fab.id = 'chat-fab';
       fab.title = 'Open AI Chat';
-      fab.textContent = '💬';
+      fab.innerHTML = '<i class="ph ph-chat-teardrop-text"></i>';
       fab.addEventListener('click', openChat);
       document.body.appendChild(fab);
     });
@@ -1287,7 +1287,7 @@ window.Pages.editor = function (container) {
       // Loading
       const loadingEl = document.createElement('div');
       loadingEl.className = 'chat-msg assistant';
-      loadingEl.innerHTML = '<span class="animate-spin" style="display: inline-block;">⏳</span> Thinking...';
+      loadingEl.innerHTML = '<span class="animate-spin" style="display: inline-block;"><i class="ph ph-hourglass"></i></span> Thinking...';
       msgsContainer.appendChild(loadingEl);
       msgsContainer.scrollTop = msgsContainer.scrollHeight;
 

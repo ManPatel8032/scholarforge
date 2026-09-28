@@ -30,7 +30,7 @@ window.Pages.home = function (container) {
               <h3 class="text-base font-semibold text-primary leading-tight">${c.name}</h3>
               <p class="mt-1 text-sm text-secondary">${c.description}</p>
             </div>
-            ${AppState.selectedConference === c.id ? '<span style="color: var(--brand-from); font-size: 1.2rem;">✓</span>' : ''}
+            ${AppState.selectedConference === c.id ? '<span style="color: var(--brand-from); font-size: 1.2rem;"><i class="ph ph-check"></i></span>' : ''}
           </div>
           <button class="btn ${AppState.selectedConference === c.id ? 'btn-brand' : 'btn-primary'} btn-full" style="margin-top: 1rem;" data-select-conf="${c.id}">
             ${AppState.selectedConference === c.id ? 'Selected' : 'Select'}
@@ -63,7 +63,7 @@ window.Pages.home = function (container) {
               <div class="upload-box" id="upload-area">
                 <div class="upload-box-hover-gradient"></div>
                 <div style="position: relative; display: flex; flex-direction: column; align-items: center;">
-                  <div class="upload-icon-box">📤</div>
+                  <div class="upload-icon-box"><i class="ph ph-upload-simple" style="font-size: 2rem;"></i></div>
                   <h3 class="mt-4 text-base font-semibold text-primary">Upload files</h3>
                   <p class="mt-1 text-sm text-secondary">Drag & drop a PDF / LaTeX / text / Word file here, or click to browse.</p>
                   <p class="mt-2 text-xs text-muted">Supported: PDF, .tex, .txt, .docx</p>
@@ -80,7 +80,7 @@ window.Pages.home = function (container) {
                     <div class="text-sm font-medium text-primary" id="file-info-name">${uploadedFile?.name || ''}</div>
                     <div class="mt-1 text-xs text-muted" id="file-info-size"></div>
                   </div>
-                  <button class="icon-btn" id="clear-file" title="Clear" style="height: 2rem; width: 2rem; font-size: 0.85rem;">✕</button>
+                  <button class="icon-btn" id="clear-file" title="Clear" style="height: 2rem; width: 2rem; font-size: 0.85rem;"><i class="ph ph-x"></i></button>
                 </div>
               </div>
               <div id="extraction-preview" class="glass-card mt-4 p-4" style="display: none;"></div>
@@ -169,9 +169,9 @@ window.Pages.home = function (container) {
           ? result.raw_text.substring(0, 800) + '…'
           : result.raw_text;
         previewEl.innerHTML = `
-                    <div class="text-xs font-semibold text-secondary mb-2">📄 Raw Extracted Text</div>
+                    <div class="text-xs font-semibold text-secondary mb-2"><i class="ph ph-file-text"></i> Raw Extracted Text</div>
                     <pre class="extraction-preview-text">${escapeHtml(truncated)}</pre>
-                    <div class="text-xs text-muted" style="margin-top: 0.5rem;">🔄 Cleaning text…</div>
+                    <div class="text-xs text-muted" style="margin-top: 0.5rem;"><i class="ph ph-arrows-clockwise"></i> Cleaning text…</div>
                 `;
         previewEl.style.display = '';
       }
@@ -211,13 +211,13 @@ window.Pages.home = function (container) {
               });
               structHtml += `</div>`;
             }
-            if (doc.references) structHtml += `<div class="text-xs text-muted" style="margin-top:0.5rem;">📚 References detected</div>`;
+            if (doc.references) structHtml += `<div class="text-xs text-muted" style="margin-top:0.5rem;"><i class="ph ph-books"></i> References detected</div>`;
 
             previewEl.innerHTML = `
               <div style="display:flex; gap:0.5rem; margin-bottom:0.75rem;">
-                <button class="btn btn-primary btn-sm preview-tab active" data-tab="structure" style="font-size:0.75rem; padding:0.25rem 0.75rem;">🧩 Structure</button>
+                <button class="btn btn-primary btn-sm preview-tab active" data-tab="structure" style="font-size:0.75rem; padding:0.25rem 0.75rem;"><i class="ph ph-puzzle-piece"></i> Structure</button>
                 <button class="btn btn-primary btn-sm preview-tab" data-tab="cleaned" style="font-size:0.75rem; padding:0.25rem 0.75rem; opacity:0.6;">✅ Cleaned</button>
-                <button class="btn btn-primary btn-sm preview-tab" data-tab="raw" style="font-size:0.75rem; padding:0.25rem 0.75rem; opacity:0.6;">📄 Raw</button>
+                <button class="btn btn-primary btn-sm preview-tab" data-tab="raw" style="font-size:0.75rem; padding:0.25rem 0.75rem; opacity:0.6;"><i class="ph ph-file-text"></i> Raw</button>
               </div>
               <div class="text-xs text-muted" style="margin-bottom:0.5rem;">Cleaned ${pct}% noise • ${detectResult.section_count} sections detected</div>
               <div id="preview-structure">${structHtml}</div>

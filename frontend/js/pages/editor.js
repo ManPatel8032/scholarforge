@@ -1228,7 +1228,7 @@ window.Pages.editor = function (container) {
       <div class="chat-header">
         <div class="flex items-center gap-2">
           <span style="color: var(--brand-from); font-size: 1.2rem;"><i class="ph ph-caret-right"></i></span>
-          <span class="font-semibold text-primary">IdeaOverflow AI</span>
+          <span class="font-semibold text-primary">ScholarForge AI</span>
         </div>
         <button class="icon-btn" id="chat-close" style="height: 2rem; width: 2rem; font-size: 0.85rem;"><i class="ph ph-x"></i></button>
       </div>

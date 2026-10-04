@@ -28,12 +28,12 @@
         if (hash === '/') hash = State.isAuthenticated() ? '/home' : '/login';
 
         // Auth guard
-        const publicRoutes = ['/login', '/signup'];
+        const publicRoutes = ['/login', '/signup', '/terms', '/privacy'];
         if (!publicRoutes.includes(hash) && !State.isAuthenticated()) {
             navigate('/login');
             return;
         }
-        if (publicRoutes.includes(hash) && State.isAuthenticated()) {
+        if (['/login', '/signup'].includes(hash) && State.isAuthenticated()) {
             navigate('/home');
             return;
         }
@@ -103,8 +103,16 @@
       <header class="navbar">
         <div class="navbar-inner">
           <a href="${isAuth ? '#/home' : '#/login'}" class="navbar-logo">
-            <span class="navbar-logo-icon">IO</span>
-            <span class="navbar-logo-text">IdeaOverflow</span>
+            <span class="navbar-logo-icon" style="display:inline-flex; align-items:center; justify-content:center; background:linear-gradient(135deg, #3b82f6 0%, #6366f1 50%, #8b5cf6 100%); border-radius:10px; box-shadow:0 3px 10px rgba(99,102,241,0.35);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Graduation cap / Scholar anvil & spark concept -->
+                <path d="M12 2L1 7L12 12L23 7L12 2Z" fill="white" fill-opacity="0.95"/>
+                <path d="M5 10.5V16C5 18.5 8.134 20.5 12 20.5C15.866 20.5 19 18.5 19 16V10.5L12 14.5L5 10.5Z" fill="white" fill-opacity="0.75"/>
+                <path d="M21 9V15" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+                <circle cx="21" cy="16" r="1.2" fill="white"/>
+              </svg>
+            </span>
+            <span class="navbar-logo-text" style="font-weight: 700; letter-spacing: -0.03em; font-size: 1.15rem; background: linear-gradient(135deg, var(--text-primary) 60%, var(--brand-from)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">ScholarForge</span>
           </a>
           <nav class="navbar-links desktop-only">${navLinksHTML}</nav>
           <div class="flex items-center gap-2">
@@ -149,13 +157,13 @@
         <div class="footer-inner">
           <div>
             <h3 class="text-sm font-semibold text-primary">About</h3>
-            <p class="mt-2 text-sm text-secondary">A platform that helps researchers easily create conference-ready papers.</p>
+            <p class="mt-2 text-sm text-secondary">A platform that helps researchers easily forge conference-ready papers.</p>
           </div>
           <div>
-            <h3 class="text-sm font-semibold text-primary">Links</h3>
+            <h3 class="text-sm font-semibold text-primary">Legal & Policies</h3>
             <ul style="list-style: none; margin-top: 0.5rem;">
-              <li><a href="https://github.com/DeepLumiere/IdeaOverflow" target="_blank" class="link-blue text-sm">GitHub</a></li>
-              <li class="mt-1"><a href="mailto:contact@ideaoverflow.local" class="link-blue text-sm">Contact</a></li>
+              <li><a href="#/terms" class="link-blue text-sm">Terms and Conditions</a></li>
+              <li class="mt-1.5"><a href="#/privacy" class="link-blue text-sm">Privacy Policy</a></li>
             </ul>
           </div>
           <div>
@@ -163,7 +171,7 @@
             <p class="mt-2 text-sm text-secondary">HTML • CSS • JavaScript • FastAPI • Local persistence</p>
           </div>
         </div>
-        <div class="footer-bottom">© ${new Date().getFullYear()} IdeaOverflow. Built for HackaMined 2026.</div>
+        <div class="footer-bottom">© ${new Date().getFullYear()} ScholarForge. Built for HackaMined 2026.</div>
       </footer>
     `;
     }
@@ -180,6 +188,8 @@
         registerRoute('/home', window.Pages.home);
         registerRoute('/editor', window.Pages.editor);
         registerRoute('/converter', window.Pages.converter);
+        registerRoute('/terms', window.Pages.terms);
+        registerRoute('/privacy', window.Pages.privacy);
 
         // Initial route
         handleRoute();

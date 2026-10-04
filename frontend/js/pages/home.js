@@ -1,5 +1,6 @@
 /* ═══════════════════════════════════════════
-   Home Page — Upload + Conference Selection
+   Home Page — Hero + Upload + Conference Selection
+   Overleaf-inspired design for ScholarForge
    ═══════════════════════════════════════════ */
 
 window.Pages = window.Pages || {};
@@ -43,14 +44,123 @@ window.Pages.home = function (container) {
   container.innerHTML = `
     ${App.renderNavbar()}
     <main style="flex: 1;">
-      <div class="mx-auto max-w-7xl px-6 py-10 fade-in">
-        <div class="flex flex-col gap-2">
-          <h1 class="tracking-tight text-primary" style="font-size: clamp(1.5rem, 4vw, 2.25rem);">Build conference papers, fast</h1>
-          <p class="text-secondary" style="max-width: 40rem;">Upload a manuscript (optional), choose a template, then compose structured sections with a live preview.</p>
-          <div class="text-sm text-muted">Signed in as <span class="font-medium text-primary">${user?.email || ''}</span></div>
-        </div>
 
-        <div style="margin-top: 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;" id="home-grid">
+      <!-- ══════════ HERO SECTION — Overleaf-inspired ══════════ -->
+      <section class="sf-hero">
+        <div class="sf-hero-inner">
+
+          <!-- Left Column: Headlines + Features -->
+          <div class="sf-hero-left">
+            <span class="sf-hero-badge">{features}</span>
+
+            <h1 class="sf-hero-heading">
+              The forge for
+              <span class="sf-hero-highlight sf-highlight-red">scholarly</span>
+              and
+              <span class="sf-hero-highlight sf-highlight-purple">conference</span>
+              papers
+            </h1>
+
+            <p class="sf-hero-sub">
+              Upload manuscripts, auto-structure sections, and compile
+              publication-ready PDFs with one click. No LaTeX expertise required.
+            </p>
+
+            <!-- Feature Bullets — Overleaf style -->
+            <div class="sf-hero-features">
+              <div class="sf-hero-bolt">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="#f59e0b" stroke="#f59e0b" stroke-width="1.5" stroke-linejoin="round"/></svg>
+              </div>
+              <h2 class="sf-hero-features-title">Get started fast</h2>
+              <p class="sf-hero-features-sub">No downloads, no setup, and no need to know LaTeX before you start.</p>
+
+              <ul class="sf-hero-checklist">
+                <li>
+                  <span class="sf-check"><i class="ph-fill ph-check-circle"></i></span>
+                  <span>Structured Editor and Live PDF Preview</span>
+                </li>
+                <li>
+                  <span class="sf-check"><i class="ph-fill ph-check-circle"></i></span>
+                  <span>Eight conference templates (IEEE, ACM, Springer…)</span>
+                </li>
+                <li>
+                  <span class="sf-check"><i class="ph-fill ph-check-circle"></i></span>
+                  <span>AI-powered section detection and formatting</span>
+                </li>
+                <li>
+                  <span class="sf-check"><i class="ph-fill ph-check-circle"></i></span>
+                  <span>One-click PDF compilation via Typst</span>
+                </li>
+              </ul>
+
+              <a href="#/editor" class="sf-hero-explore">Explore features →</a>
+            </div>
+          </div>
+
+          <!-- Right Column: Floating editor preview card -->
+          <div class="sf-hero-right">
+            <!-- Decorative arrow -->
+            <div class="sf-hero-arrow">
+              <svg width="60" height="60" viewBox="0 0 60 60" fill="none"><path d="M10 5 C25 10, 40 25, 50 50" stroke="var(--brand-from)" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.35"/><path d="M45 42 L50 50 L42 48" stroke="var(--brand-from)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.35"/></svg>
+            </div>
+            <div class="sf-editor-preview">
+              <div class="sf-editor-toolbar">
+                <span class="sf-toolbar-tab">Code Editor</span>
+                <span class="sf-toolbar-tab sf-toolbar-active">Visual Editor</span>
+                <div class="sf-toolbar-icons">
+                  <span><i class="ph ph-arrow-counter-clockwise"></i></span>
+                  <span><i class="ph ph-arrow-clockwise"></i></span>
+                  <span><i class="ph ph-text-b" style="font-weight:700;"></i></span>
+                  <span><i class="ph ph-text-italic"></i></span>
+                  <span><i class="ph ph-link"></i></span>
+                  <span><i class="ph ph-image"></i></span>
+                  <span><i class="ph ph-table"></i></span>
+                  <span><i class="ph ph-list-bullets"></i></span>
+                  <span><i class="ph ph-list-numbers"></i></span>
+                </div>
+              </div>
+              <div class="sf-editor-body">
+                <h3 style="font-size: 1rem; font-weight: 700; color: var(--text-primary); margin: 0;">Proposed Methodology: Dynamic Learning Rates</h3>
+                <p style="font-size: 0.78rem; color: var(--text-secondary); margin-top: 0.5rem; line-height: 1.55;">
+                  Our proposed methodology introduces a complex adaptive learning rate mechanism, as detailed by the following equation:
+                </p>
+                <pre style="background: var(--bg-hover); padding: 0.6rem 0.8rem; border-radius: 4px; margin-top: 0.6rem; font-size: 0.72rem; color: var(--text-muted); font-family: 'Courier New', monospace; overflow: hidden;">\\begin{equation}
+    \\eta_t = \\frac{\\eta_0}{1 + \\alpha \\cdot t}
+\\end{equation}</pre>
+                <h3 style="font-size: 0.92rem; font-weight: 700; color: var(--text-primary); margin-top: 1rem;">Experimental Setup and Dataset Selection</h3>
+                <p style="font-size: 0.78rem; color: var(--text-secondary); margin-top: 0.35rem; line-height: 1.55;">
+                  To rigorously evaluate the effectiveness of our proposed adaptive learning rate mechanism, we conducted experiments using three benchmark datasets: MNIST, CIFAR-10, and ImageNet.
+                </p>
+                <!-- Mini table -->
+                <div style="margin-top: 0.8rem; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; font-size: 0.7rem;">
+                  <div style="text-align: center; font-weight: 600; padding: 0.35rem; background: var(--bg-hover); color: var(--text-primary); font-size: 0.72rem;">Experimental Results</div>
+                  <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                      <tr style="background: var(--bg-hover);">
+                        <th style="padding: 0.3rem 0.5rem; text-align: left; border-bottom: 1px solid var(--border); color: var(--text-primary);">Dataset</th>
+                        <th style="padding: 0.3rem 0.5rem; text-align: center; border-bottom: 1px solid var(--border); color: var(--text-primary);">Convergence (epochs)</th>
+                        <th style="padding: 0.3rem 0.5rem; text-align: center; border-bottom: 1px solid var(--border); color: var(--text-primary);">Accuracy (%)</th>
+                      </tr>
+                    </thead>
+                    <tbody style="color: var(--text-secondary);">
+                      <tr><td style="padding: 0.25rem 0.5rem; border-bottom: 1px solid var(--border);">MNIST</td><td style="text-align:center; padding: 0.25rem; border-bottom: 1px solid var(--border);">150</td><td style="text-align:center; padding: 0.25rem; border-bottom: 1px solid var(--border);">98.5</td></tr>
+                      <tr><td style="padding: 0.25rem 0.5rem; border-bottom: 1px solid var(--border);">CIFAR-10</td><td style="text-align:center; padding: 0.25rem; border-bottom: 1px solid var(--border);">200</td><td style="text-align:center; padding: 0.25rem; border-bottom: 1px solid var(--border);">91.2</td></tr>
+                      <tr><td style="padding: 0.25rem 0.5rem;">ImageNet</td><td style="text-align:center; padding: 0.25rem;">50</td><td style="text-align:center; padding: 0.25rem;">76.8</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ══════════ UPLOAD + CONFERENCE GRID ══════════ -->
+      <div class="mx-auto max-w-7xl px-6 py-10 fade-in">
+        <div class="text-sm text-muted" style="margin-bottom: 1.5rem;">Signed in as <span class="font-medium text-primary">${user?.email || ''}</span></div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;" id="home-grid">
           <!-- Upload Section -->
           <section>
             <div class="flex items-baseline justify-between gap-3">
